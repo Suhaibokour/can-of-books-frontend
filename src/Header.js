@@ -21,6 +21,7 @@ class Header extends React.Component {
           isAuthenticated && (
             <>
               <Link to="/profile">Profile</Link>
+              
               <LogoutButton />
             </>
           )
