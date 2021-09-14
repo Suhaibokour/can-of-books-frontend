@@ -69,6 +69,7 @@ import {
   Route
 } from "react-router-dom";
 import LoginButton from './components/loginButton';
+import MyForm from './components/bookForm';
 class App extends React.Component {
   render() {
     console.log('app', this.props);
@@ -77,6 +78,7 @@ class App extends React.Component {
         <Router>
           {/* <IsLoadingAndError> */}
             <Header />
+            {/* <MyForm /> */}
             <Switch>
             <Route exact path="/">
               {this.props.auth0.isAuthenticated ? <BestBooks /> : <LoginButton />}
