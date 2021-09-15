@@ -1,5 +1,6 @@
 import React from 'react';
 import './BookItem.css'
+import Button from 'react-bootstrap/Button';
 
 class BookItem extends React.Component {
     render() {
@@ -9,7 +10,8 @@ class BookItem extends React.Component {
             <p>{this.props.item.description}</p>
             <p>{this.props.item.status}</p>
             <p>{this.props.item.email}</p>
-            <button onClick={() => this.props.deleteBook(this.props.item._id)}>Delete Book</button>
+            <Button onClick={() => this.props.deleteBook(this.props.item._id)}>Delete Book</Button>
+            <Button onClick={() => this.props.showModalUpdate(this.props.item)}>Update Book</Button>
             </div>
         )
     }
