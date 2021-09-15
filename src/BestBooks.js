@@ -28,11 +28,11 @@ class MyFavoriteBooks extends React.Component {
       id: ''
     }
   }
-
+  // (`http://localhost:3030/getBooks?email=${email}`)
   componentDidMount = () => {
     const { user } = this.props.auth0;
     let email = user.email;
-    axios.get(`http://localhost:3030/getBooks?email=${email}`)
+    axios.get(`https://books-suhaib-backend.herokuapp.com/getBooks?email=${email}`)
       .then(result => {
         this.setState({
           favBooksArr: result.data
@@ -43,7 +43,7 @@ class MyFavoriteBooks extends React.Component {
       })
   }
 
-
+  // (`http://localhost:3030/addBooks`, obj)
   addBookHandler = (event) => {
     event.preventDefault();
     const { user } = this.props.auth0;
@@ -55,7 +55,7 @@ class MyFavoriteBooks extends React.Component {
       status: event.target.status.value
 
     }
-    axios.post(`http://localhost:3030/addBooks`, obj)
+    axios.post(`https://books-suhaib-backend.herokuapp.com/addBooks`, obj)
       .then(result => {
         this.setState({
           favBooksArr: result.data
@@ -68,11 +68,11 @@ class MyFavoriteBooks extends React.Component {
 
   }
 
-
+  // (`http://localhost:3030/deleteBooks/${id}?email=${email}`)
   deleteBook = (id) => {
     const { user } = this.props.auth0;
     let email = user.email;
-    axios.delete(`http://localhost:3030/deleteBooks/${id}?email=${email}`)
+    axios.delete(`https://books-suhaib-backend.herokuapp.com/deleteBooks/${id}?email=${email}`)
       .then(result => {
         this.setState({
           favBooksArr: result.data
@@ -99,7 +99,7 @@ class MyFavoriteBooks extends React.Component {
       id: item._id
     })
   }
-
+  // (`http://localhost:3030/updateBooks/${this.state.id}`,obj)
   updateBook=(event)=>{
     event.preventDefault();
     const { user } = this.props.auth0;
@@ -112,7 +112,7 @@ class MyFavoriteBooks extends React.Component {
       id:this.state.id
     }
     axios
-    .put(`http://localhost:3030/updateBooks/${this.state.id}`,obj)
+    .put(`https://books-suhaib-backend.herokuapp.com/updateBooks/${this.state.id}`,obj)
     .then(result=>{
       this.setState({
         favBooksArr: result.data,
